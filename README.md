@@ -1,7 +1,7 @@
 # Phylogenetic_tree_of_Microviridae_and_Inovirus_like_viruses
 Phylogenetic trees of Microviridae and inovirus-like viruses were generated base on VP1 and PI, respectively.
 
-###########################Construction of a phylogenetic tree of Microviridae using VP1 protein:#########################
+###Construction of a phylogenetic tree of Microviridae using VP1 protein:
 
 Step1. Obtaining viral VP1 protein
 	The obtained VP1 sequences(VP1_protein.faa) were collected from paper (Kirchberger et al. 2022; Yoshida et al. 2013; Malki et al. 2021; Pearson et al. 2016; Quaiser et al. 2015; Bryson et al. 2015). Detailed information is provided in (Table S1 Microviridae.xlsx).
@@ -11,7 +11,6 @@ Step2. Construct phylogenetic tree
 	(muscle -align VP1_protein.faa -output VP1_protein_aln.afa)
 	TrimAL v1.4.rev15 (Capella-Gutiérrez et al. 2009) automatic trimming comparison results
 	(trimal -in VP1_protein_aln.afa -out VP1_protein_aln_trimal_output -automated1)
-
 	Iqtree v2.2.0.3 Construct phylogenetic tree (Minh et al. 2020), with '-nt AUTO'. The constructed phylogenetic tree model is automatically evaluated and the most suitable model is selected as LG+F+R7 model.
 	(iqtree -s VP1_protein_aln_trimal_output -bb 1000 -nt AUTO -m MFP -pre output -T 36)
 
@@ -19,7 +18,9 @@ Step3. Visualization.
 	ITOL (https://itol.embl.de/) Visualizing phylogenetic trees(VP1_protein.treefile)
 	Create itol-profile according to the environment (iTOL_Env.txt) and family level (iTOL_Family.txt) from which the virus originated(Fig 3-Microviridae Phylogenetic trees).
 
-###########################Construction of a phylogenetic tree of Inovirus-like viruses using PI proteins:#######################
+
+
+###Construction of a phylogenetic tree of Inovirus-like viruses using PI proteins:
 
 Step1.Obtaining viral Genbank files.
 	Collect the Genbank files obtained from paper(Roux et al. 2019) and ICTV database(https://ictv.global/), see Sequence information.
@@ -42,7 +43,7 @@ step5.Visualization
 	Create itol-profile according to the environment (iTOL_Env.txt) and family level (iTOL_Family.txt) from which the virus originated(Fig 4-Inovirus-like viruses Phylogenetic trees.tif).
 
 
-################################################     Reference    ################################################
+Reference:
 
 	Bryson SJ, Thurber AR, Correa AM et al. A novel sister clade to the enterobacteria microviruses (family Microviridae) identified in methane seep sediments. Environ Microbiol. 2015;17:3708-21.
 
