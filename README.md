@@ -4,35 +4,23 @@ Phylogenetic trees of environmental Microviridae and inovirus-like viruses were 
 
 ###Construction of the phylogenetic tree of environmental Microviridae based on VP1 protein:
 
-#Step1. Collection of VP1 protein sequences from environmental Microviridae
-
+##Step1. Collection of VP1 protein sequences from environmental Microviridae
 	VP1 sequences (VP1_protein.faa) were collected from several studies on environmental Microviridae (Kirchberger et al. 2022; Yoshida et al. 2013; Malki et al. 2021; Pearson et al. 2016; Quaiser et al. 2015; Bryson et al. 2015). Detailed information on collected VP1 sequences is provided in Table S1 Microviridae.xlsx.
-
-#Step2. Construction of the phylogenetic tree
-
+##Step2. Construction of the phylogenetic tree
 	Muscle v5.1 (Edgar. 2004) was used to perform sequence alignment with the default mode (muscle -align VP1_protein.faa -output VP1_protein_aln.afa). The alignment was then automatically trimmed using TrimAL v1.4.rev15 (Capella-Gutiérrez et al. 2009), with parameters 'trimal -in VP1_protein_aln.afa -out VP1_protein_aln_trimal_output -automated1'. The tree was generated using Iqtree v2.2.0.3 (Minh et al. 2020), with parameters '-nt AUTO'. The constructed phylogenetic tree model was automatically evaluated, and the most suitable model was selected as the LG+F+R7 model (iqtree -s VP1_protein_aln_trimal_output -bb 1000 -nt AUTO -m MFP -pre output -T 36).
-
-#Step3. Visualization of phylogenetic tree
-
+##Step3. Visualization of phylogenetic tree
 	iTOL (https://itol.embl.de/) was used to visualize phylogenetic trees (VP1_protein.treefile). iTOL-profile was created based on the information of isolation environments (iTOL_Env.txt) and subfamily assignments (iTOL_Family.txt) of environmental Microviridae (Fig 3-Microviridae Phylogenetic trees.tif).
 
  
 ###Construction of the phylogenetic tree of Inovirus-like viruses based on pI proteins:
 
-#Step1. Collection of genome sequences of Inovirus-like viruses
-
+##Step1. Collection of genome sequences of Inovirus-like viruses
 	The genome sequences of environmental Inovirus-like viruses and ICTV-recognized Inovirus-like viruses were collected from Roux et al. 2019 and ICTV database(https://ictv.global/), respectively. Detailed information on collected genome sequences of Inovirus-like viruses is provided in (Table S2 Inovirus-like viruses.xlsx).
-
-#Step2. Identification of pI protein
-
+##Step2. Identification of pI protein
 	Python script (gb_faa.py) was used to extract all protein sequences from the genome sequences of Inovirus-like viruses. The pI proteins (PI_protein.faa) was then identified by HMMER v3.3.2 search (Finn R D et al. 2004) using PI.hmm model established by Roux et al. 2019.
-
-#Step3. Construction of phylogenetic tree
-
+##Step3. Construction of phylogenetic tree
 	Alignment was conducted by muscle v5.1(Edgar. 2004) using -super5 mode for fast alignments of large batches of protein sequences (muscle -super5 PI_protein.faa -output PI_proetin_aln.afa). The phylogenetic tree was constructed using FastTree v2.1.11(Price et al.2010) software (FastTree -lg PI_proetin_aln.afa > PI_protein_tree).
-
-#Step4. Visualization of phylogenetic tree
-
+##Step4. Visualization of phylogenetic tree
 	iTOL (https://itol.embl.de/) was used to visualize phylogenetic trees (PI_protein_tree). iTOL-profile was created based on the information of isolation environments (iTOL_Env.txt) and subfamily assignments (iTOL_Family.txt) of environmental Inovirus-like viruses (Fig 4-Inovirus-like viruses Phylogenetic trees.tif).
 
 
