@@ -1,46 +1,33 @@
 # Phylogenetic_tree_of_Microviridae_and_Inovirus_like_viruses
-Phylogenetic trees of Microviridae and inovirus-like viruses were generated base on VP1 and PI, respectively.
-
-###Construction of a phylogenetic tree of Microviridae using VP1 protein:
-
-Step1. Obtaining viral VP1 protein
-	The obtained VP1 sequences(VP1_protein.faa) were collected from paper (Kirchberger et al. 2022; Yoshida et al. 2013; Malki et al. 2021; Pearson et al. 2016; Quaiser et al. 2015; Bryson et al. 2015). Detailed information is provided in (Table S1 Microviridae.xlsx).
-
-Step2. Construct phylogenetic tree
-	Using Muscle v5.1 (Edgar. 2004) to perform sequence alignment with the default mode
-	(muscle -align VP1_protein.faa -output VP1_protein_aln.afa)
-	TrimAL v1.4.rev15 (Capella-Gutiérrez et al. 2009) automatic trimming comparison results
-	(trimal -in VP1_protein_aln.afa -out VP1_protein_aln_trimal_output -automated1)
-	Iqtree v2.2.0.3 Construct phylogenetic tree (Minh et al. 2020), with '-nt AUTO'. The constructed phylogenetic tree model is automatically evaluated and the most suitable model is selected as LG+F+R7 model.
-	(iqtree -s VP1_protein_aln_trimal_output -bb 1000 -nt AUTO -m MFP -pre output -T 36)
-
-Step3. Visualization.
-	ITOL (https://itol.embl.de/) Visualizing phylogenetic trees(VP1_protein.treefile)
-	Create itol-profile according to the environment (iTOL_Env.txt) and family level (iTOL_Family.txt) from which the virus originated(Fig 3-Microviridae Phylogenetic trees).
+Phylogenetic trees of environmental Microviridae and inovirus-like viruses were generated based on VP1 and pI, respectively.
 
 
+###Construction of the phylogenetic tree of environmental Microviridae based on VP1 protein:
 
-###Construction of a phylogenetic tree of Inovirus-like viruses using PI proteins:
+Step1. Collection of VP1 protein sequences from environmental Microviridae. 
+	VP1 sequences (VP1_protein.faa) were collected from several studies on environmental Microviridae (Kirchberger et al. 2022; Yoshida et al. 2013; Malki et al. 2021; Pearson et al. 2016; Quaiser et al. 2015; Bryson et al. 2015). Detailed information on collected VP1 sequences is provided in Table S1 Microviridae.xlsx.
 
-Step1.Obtaining viral Genbank files.
-	Collect the Genbank files obtained from paper(Roux et al. 2019) and ICTV database(https://ictv.global/), see Sequence information.
+Step2. Construction of the phylogenetic tree. 
+	Muscle v5.1 (Edgar. 2004) was used to perform sequence alignment with the default mode (muscle -align VP1_protein.faa -output VP1_protein_aln.afa). The alignment was then automatically trimmed using TrimAL v1.4.rev15 (Capella-Gutiérrez et al. 2009), with parameters 'trimal -in VP1_protein_aln.afa -out VP1_protein_aln_trimal_output -automated1'. The tree was generated using Iqtree v2.2.0.3 (Minh et al. 2020), with parameters '-nt AUTO'. The constructed phylogenetic tree model was automatically evaluated, and the most suitable model was selected as the LG+F+R7 model (iqtree -s VP1_protein_aln_trimal_output -bb 1000 -nt AUTO -m MFP -pre output -T 36).
 
-Step2.Extract protein information.
-	First extract the protein sequences from the Genbank file using python script (gb_faa.py).
+Step3. Visualization of phylogenetic tree
+	iTOL (https://itol.embl.de/) was used to visualize phylogenetic trees (VP1_protein.treefile). iTOL-profile was created based on the information of isolation environments (iTOL_Env.txt) and subfamily assignments (iTOL_Family.txt) of environmental Microviridae (Fig 3-Microviridae Phylogenetic trees.tif).
 
-Step3.Obtaining PI proteins(PI_protein.faa).
-	After using the constructed PI.hmm model obtained from the paper(Roux et al. 2019) and searching it using HMMER v3.3.2(Finn R D et al. 2004).
-	
-step4.Construction phylogenetic tree.
-	muscle v5.1(Edgar. 2004) alignment, using -super5 mode for fast comparison of large batches of protein sequences.
-	(muscle -super5 PI_protein.faa -output PI_proetin_aln.afa)
-	Fast construction of evolutionary trees using FastTree v2.1.11(Price et al.2010) software to select -lg models.
-	(FastTree -lg PI_proetin_aln.afa > PI_protein_tree)
+ 
+###Construction of the phylogenetic tree of Inovirus-like viruses based on pI proteins:
 
-step5.Visualization
-	ITOL (https://itol.embl.de/) Visualizing phylogenetic trees.
-	Create itol-profile by virus origin environment (iTol_env.txt) and Family level (iTol_Family.txt).
-	Create itol-profile according to the environment (iTOL_Env.txt) and family level (iTOL_Family.txt) from which the virus originated(Fig 4-Inovirus-like viruses Phylogenetic trees.tif).
+Step1. Collection of genome sequences of Inovirus-like viruses
+	The genome sequences of environmental Inovirus-like viruses and ICTV-recognized Inovirus-like viruses were collected from Roux et al. 2019 and ICTV database(https://ictv.global/), respectively. Detailed information on collected genome sequences of Inovirus-like viruses is provided in (Table S2 Inovirus-like viruses.xlsx).
+
+Step2. Identification of pI protein
+	Python script (gb_faa.py) was used to extract all protein sequences from the genome sequences of Inovirus-like viruses. The pI proteins (PI_protein.faa) was then identified by HMMER v3.3.2 search (Finn R D et al. 2004) using PI.hmm model established by Roux et al. 2019.
+
+Sep3. Construction of phylogenetic tree.
+	Alignment was conducted by muscle v5.1(Edgar. 2004) using -super5 mode for fast alignments of large batches of protein sequences (muscle -super5 PI_protein.faa -output PI_proetin_aln.afa). The phylogenetic tree was constructed using FastTree v2.1.11(Price et al.2010) software (FastTree -lg PI_proetin_aln.afa > PI_protein_tree).
+
+Step5. Visualization of phylogenetic tree
+	iTOL (https://itol.embl.de/) was used to visualize phylogenetic trees (PI_protein_tree). iTOL-profile was created based on the information of isolation environments (iTOL_Env.txt) and subfamily assignments (iTOL_Family.txt) of environmental Inovirus-like viruses (Fig 4-Inovirus-like viruses Phylogenetic trees.tif).
+
 
 
 Reference:
